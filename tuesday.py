@@ -8,11 +8,11 @@ import json
 from google.cloud import dialogflow_v2 as dialogflow
 # Configuration and Global Variables
 # Dialogflow configuration
-DIALOGFLOW_PROJECT_ID = '330518613512'    
-DIALOGFLOW_SESSION_ID = '0428968180'        
+DIALOGFLOW_PROJECT_ID = 'YOUR PROJECT ID '    
+DIALOGFLOW_SESSION_ID = 'YOUR SESSION ID '        
 
 # Gemini API key (if needed; not used by default) default it gives response of prefed queries/questions
-GEMINI_API_KEY = 'AIzaSyCpSQtMp2xoIkXlP2dfZHkJhOewtCHnDQI'
+GEMINI_API_KEY = 'YOUR API KEY '
 
 # File to store the last used voice
 VOICE_FILE = "last_used_voice.txt"
