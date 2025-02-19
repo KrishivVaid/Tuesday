@@ -5,27 +5,18 @@ import datetime
 import os
 import socket
 import json
-
-# Google Dialogflow
 from google.cloud import dialogflow_v2 as dialogflow
-
-#######################################
 # Configuration and Global Variables
-#######################################
-
 # Dialogflow configuration
-DIALOGFLOW_PROJECT_ID = 'YOUR_DIALOGFLOW_PROJECT_ID'    # <-- Replace
-DIALOGFLOW_SESSION_ID = 'YOUR_SESSION_ID_123456'        # <-- Replace with a unique string
+DIALOGFLOW_PROJECT_ID = '330518613512'    
+DIALOGFLOW_SESSION_ID = '0428968180'        
 
-# Gemini API key (if needed; not used by default)
-GEMINI_API_KEY = 'YOUR_GEMINI_API_KEY'
+# Gemini API key (if needed; not used by default) default it gives response of prefed queries/questions
+GEMINI_API_KEY = 'AIzaSyCpSQtMp2xoIkXlP2dfZHkJhOewtCHnDQI'
 
 # File to store the last used voice
 VOICE_FILE = "last_used_voice.txt"
-
-#######################################
 # Initialize pyttsx3
-#######################################
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -33,11 +24,7 @@ voices = engine.getProperty('voices')
 # You may have fewer or more voices. Adjust indices if needed.
 tuesday_voice = voices[0]  # Typically male voice
 friday_voice = voices[1]   # Typically female voice
-
-#######################################
 # Persist Last-Used Voice
-#######################################
-
 def load_last_used_voice():
     """Load the last used voice (tuesday or friday) from a file."""
     if os.path.exists(VOICE_FILE):
@@ -56,20 +43,12 @@ if last_used_voice == "friday":
     engine.setProperty('voice', friday_voice.id)
 else:
     engine.setProperty('voice', tuesday_voice.id)
-
-#######################################
 # TTS: speak()
-#######################################
-
 def speak(text):
     """Speak the provided text using pyttsx3."""
     engine.say(text)
     engine.runAndWait()
-
-#######################################
 # Greeting
-#######################################
-
 def greet(voice_name="Tuesday"):
     """Greet based on current time and voice name."""
     hour = int(datetime.datetime.now().hour)
@@ -80,10 +59,7 @@ def greet(voice_name="Tuesday"):
     else:
         speak(f"Good evening! I'm {voice_name}. How may I help you?")
 
-#######################################
 # Speech Recognition
-#######################################
-
 def take_command():
     """
     Listen via microphone and return recognized text.
@@ -113,11 +89,7 @@ def take_command():
     
     speak("I couldn't catch your voice after several attempts. Please check your microphone.")
     return None
-
-#######################################
 # Network / Online Check
-#######################################
-
 def is_online():
     """Check internet connectivity by connecting to 8.8.8.8:53."""
     try:
@@ -126,10 +98,7 @@ def is_online():
     except OSError:
         return False
 
-#######################################
 # Basic Offline Q&A
-#######################################
-
 def basic_questions(query):
     """
     Provides some basic offline answers if Dialogflow
