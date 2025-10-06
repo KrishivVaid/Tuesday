@@ -135,9 +135,9 @@ def basic_questions(query):
     # No match
     return None
 
-#######################################
+
 # Dialogflow Integration
-#######################################
+
 
 def ask_dialogflow(query):
     """
@@ -176,9 +176,8 @@ def chat_with_bot(query):
         else:
             return "I'm offline and I can't find an answer to that. Please try again later."
 
-#######################################
 # Voice Switching
-#######################################
+
 
 def set_voice(gender="tuesday"):
     """Switch between Tuesday (male) and Friday (female) voices."""
@@ -195,9 +194,9 @@ def set_voice(gender="tuesday"):
         save_last_used_voice("tuesday")
         speak("Voice switched to Tuesday, your male assistant.")
 
-#######################################
+
 # Conversation Modes
-#######################################
+
 
 def text_to_text_chat():
     """
@@ -330,9 +329,6 @@ def speech_to_speech_chat():
         print(f"Bot: {response}")
         speak(response)
 
-#######################################
-# Initial Mode Selection by Key
-#######################################
 
 def choose_mode_by_key():
     """
@@ -362,9 +358,7 @@ def choose_mode_by_key():
         else:
             speak("Invalid choice. Please enter 1, 2, or 3.")
 
-#######################################
-# Main
-#######################################
+
 
 if __name__ == "__main__":
     # Greet user with last used voice
@@ -393,3 +387,4 @@ if __name__ == "__main__":
             break
     
     speak("Goodbye! Have a great day.")
+
